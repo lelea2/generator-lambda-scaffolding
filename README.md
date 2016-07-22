@@ -10,13 +10,13 @@ First, install [Yeoman](http://yeoman.io) and generator-lambda-scaffolding-gener
 
 ```bash
 npm install -g yo
-npm install -g generator-lambda-scaffolding-generator
+npm install -g generator-lambda-scaffolding
 ```
 
 Then generate your new project:
 
 ```bash
-yo lambda-scaffolding-generator
+yo lambda-scaffolding
 ```
 
 ## Getting To Know Yeoman
