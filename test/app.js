@@ -3,7 +3,7 @@ var path = require('path');
 var assert = require('yeoman-assert');
 var helpers = require('yeoman-test');
 
-describe('generator-lambda-scaffolding-generator:app', function () {
+describe('generator-lambda-scaffolding:app', function () {
   before(function () {
     return helpers.run(path.join(__dirname, '../generators/app'))
       .withPrompts({someAnswer: true})
@@ -12,7 +12,15 @@ describe('generator-lambda-scaffolding-generator:app', function () {
 
   it('creates files', function () {
     assert.file([
-      'dummyfile.txt'
+      'app/index.js',
+      'test/index.js',
+      'build/env.hbs',
+      'Gruntfile.js',
+      'handler.js',
+      'README.md',
+      '.gitignore',
+      '.jshintrc',
+      '.jscsrc'
     ]);
   });
 });
