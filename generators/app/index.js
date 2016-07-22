@@ -4,13 +4,22 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 
-var OnepageGenerator = yeoman.generators.Base.extend({
+var OnepageGenerator = yeoman.Base.extend({
   promptUser: function() {
     var done = this.async();
 
-    // have Yeoman greet the user
-    console.log(this.yeoman);
+    var welcome =
+'\n     _-----_' +
+'\n    |       |' +
+'\n    |' + chalk.red('--(o)--') + '|   .--------------------------.' +
+'\n   `---------´  |    ' + chalk.yellow.bold('Welcome to lamdba-scaffold generator,') + '    |' +
+'\n    ' + chalk.yellow('(') + ' _' + chalk.yellow('´U`') + '_ ' + chalk.yellow(')') + '   |   ' + chalk.yellow.bold('ladies and gentlemen!') + '  |' +
+'\n    /___A___\\   \'__________________________\'' +
+'\n     ' + chalk.yellow('|  ~  |') +
+'\n   __' + chalk.yellow('\'.___.\'') + '__' +
+'\n ´   ' + chalk.red('`  |') + '° ' + chalk.red('´ Y') + ' `\n';
 
+console.log(welcome);
     var prompts = [{
       name: 'appName',
       message: 'What is your app\'s name ?'
@@ -32,13 +41,15 @@ var OnepageGenerator = yeoman.generators.Base.extend({
   },
 
   //Making folder ready
-  scaffoldFolders: function(){
+  scaffoldFolders: function() {
+    console.log('scaffoldFolders process...');
     this.mkdir("app");
     this.mkdir("build");
     this.mkdir("test");
   },
 
-  copyMainFiles: function(){
+  copyMainFiles: function() {
+    console.log('copyMainFiles process...');
     this.copy("_index.js", "app/index.js");
     this.copy("_index_test.js", "test/index.js");
     this.copy("_env.hbs", "build/env.hbs");
@@ -58,7 +69,8 @@ var OnepageGenerator = yeoman.generators.Base.extend({
     this.template("_package.json", "package.json", context);
   },
 
-  runNpm: function(){
+  runNpm: function() {
+    console.log('runNpm process...');
     var done = this.async();
     this.npmInstall("", function(){
         console.log("\nEverything Setup !!!\n");
