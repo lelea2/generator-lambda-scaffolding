@@ -4,8 +4,9 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 var mkdirp = require('mkdirp');
 var chalk = require('chalk');
+var validatePackageName = require('validate-npm-package-name');
 
-var OnepageGenerator = yeoman.Base.extend({
+var LambdaGenerator = yeoman.Base.extend({
   promptUser: function() {
     var done = this.async();
 
@@ -23,7 +24,18 @@ var OnepageGenerator = yeoman.Base.extend({
     console.log(welcome);
     var prompts = [{
       name: 'appName',
-      message: 'What is your app\'s name ?'
+      message: 'What is your app\'s name ?',
+      validate: function(name) {
+        var validation = validatePackageName(name);
+        var warnings = validation.warnings || [];
+        var errors = validation.errors || [];
+
+        if (validation.validForNewPackages) {
+          return true;
+        }
+
+        return warnings.concat(errors).join('\n');
+      }
     },{
       name: 'appDescription',
       message: 'Enter your app description:'
@@ -78,4 +90,4 @@ var OnepageGenerator = yeoman.Base.extend({
   }
 });
 
-module.exports = OnepageGenerator;
+module.exports = LambdaGenerator;
