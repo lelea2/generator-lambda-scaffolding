@@ -55,21 +55,23 @@ var LambdaGenerator = yeoman.Base.extend({
 
   //Making folder ready
   writing: function() {
-    mkdirp("app");
-    mkdirp("build");
-    mkdirp("test");
+    var base = this.appName;
+    mkdirp(base);
+    mkdirp(base + "/app");
+    mkdirp(base + "/build");
+    mkdirp(base + "/test");
 
     //Copy main file
     console.log('copyMainFiles process...');
-    this.copy("_index.js", "app/index.js");
-    this.copy("_index_test.js", "test/index.js");
-    this.copy("_env.hbs", "build/env.hbs");
-    this.copy("_gruntfile.js", "Gruntfile.js");
-    this.copy("_handler.js", "handler.js");
-    this.copy("README.md", "README.md");
-    this.copy("gitignore", ".gitignore");
-    this.copy("jshintrc", ".jshintrc");
-    this.copy("jscsrc", ".jscsrc");
+    this.copy("_index.js", base + "/app/index.js");
+    this.copy("_index_test.js", base + "/test/index.js");
+    this.copy("_env.hbs", base + "/build/env.hbs");
+    this.copy("_gruntfile.js", base + "/Gruntfile.js");
+    this.copy("_handler.js", base + "/handler.js");
+    this.copy("README.md", base + "/README.md");
+    this.copy("gitignore", base + "/.gitignore");
+    this.copy("jshintrc", base + "/.jshintrc");
+    this.copy("jscsrc", base + "/.jscsrc");
 
     var context = {
         appName: this.appName,
@@ -77,16 +79,12 @@ var LambdaGenerator = yeoman.Base.extend({
         appURL: this.appURL
     };
 
-    this.template("_package.json", "package.json", context);
+    this.template("_package.json", base + "/package.json", context);
   },
 
   install: function() {
     console.log('runNpm process...');
-    var done = this.async();
-    this.npmInstall("", function(){
-        console.log("\nEverything Setup !!!\n");
-        done();
-    });
+    this.npmInstall();
   }
 });
 

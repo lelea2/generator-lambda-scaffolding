@@ -1,6 +1,6 @@
 {
   "name": "generator-lambda-scaffolding",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Yeoman generator for lamdba project in Node.js",
   "homepage": "https://github.com/lelea2/generator-lambda-scaffolding",
   "author": {
