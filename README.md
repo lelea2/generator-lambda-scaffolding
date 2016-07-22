@@ -1,4 +1,4 @@
-# lambda-scaffolding-generator [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
+# generator-lambda-scaffolding
 > Yeoman generator for lamdba project in Node.js
 
 ## Inspiration
