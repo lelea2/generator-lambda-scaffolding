@@ -19,7 +19,7 @@ var OnepageGenerator = yeoman.Base.extend({
 '\n   __' + chalk.yellow('\'.___.\'') + '__' +
 '\n ´   ' + chalk.red('`  |') + '° ' + chalk.red('´ Y') + ' `\n';
 
-console.log(welcome);
+    console.log(welcome);
     var prompts = [{
       name: 'appName',
       message: 'What is your app\'s name ?'
@@ -31,7 +31,7 @@ console.log(welcome);
       message: 'Enter your app repository:'
     }];
 
-    this.prompt(prompts, function (props) {
+    this.prompt(prompts).then(function (props) {
       this.appName = props.appName;
       this.appDescription = props.appDescription;
       this.appURL = props.appURL;
@@ -41,14 +41,12 @@ console.log(welcome);
   },
 
   //Making folder ready
-  scaffoldFolders: function() {
-    console.log('scaffoldFolders process...');
-    this.mkdir("app");
-    this.mkdir("build");
-    this.mkdir("test");
-  },
+  writing: function() {
+    this.mkdirp("app");
+    this.mkdirp("build");
+    this.mkdirp("test");
 
-  copyMainFiles: function() {
+    //Copy main file
     console.log('copyMainFiles process...');
     this.copy("_index.js", "app/index.js");
     this.copy("_index_test.js", "test/index.js");
@@ -69,7 +67,7 @@ console.log(welcome);
     this.template("_package.json", "package.json", context);
   },
 
-  runNpm: function() {
+  install: function() {
     console.log('runNpm process...');
     var done = this.async();
     this.npmInstall("", function(){
