@@ -2,6 +2,7 @@
 var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
+var mkdirp = require('mkdirp');
 var chalk = require('chalk');
 
 var OnepageGenerator = yeoman.Base.extend({
@@ -42,9 +43,9 @@ var OnepageGenerator = yeoman.Base.extend({
 
   //Making folder ready
   writing: function() {
-    this.mkdirp("app");
-    this.mkdirp("build");
-    this.mkdirp("test");
+    mkdirp("app");
+    mkdirp("build");
+    mkdirp("test");
 
     //Copy main file
     console.log('copyMainFiles process...');
