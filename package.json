@@ -5,7 +5,7 @@
   "homepage": "https://github.com/lelea2/lambda-scaffolding-generator",
   "author": {
     "name": "Khanh Dao",
-    "email": "daomaikhanh1988@yahoo.com",
+    "email": "daomaikhanh1988@yahoo.com"
   },
   "files": [
     "generators"
