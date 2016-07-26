@@ -27,8 +27,7 @@ yo lambda-scaffolding
  * Feel free to [learn more about Yeoman](http://yeoman.io/).
 
 ## License
-
-unlicense © [Khanh Dao]()
+ISC © [Khanh Dao]()
 
 
 [npm-image]: https://badge.fury.io/js/generator-lambda-scaffolding-generator.svg
